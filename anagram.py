@@ -4,7 +4,8 @@ def main():
     "Bienvenidos a Ana's Gram! \n",
     "[1] Start New Game \n",
     "[2] Continue \n",
-    "[3] Quit \n",
+    "[3] Quit \n \n",
+    "Answer \'Quit\' at any time to exit \n"
 )
     choice = input('>')
 
@@ -116,8 +117,9 @@ def guess(guess_bank, valid='false'):
                 else:
                     print("Invalid Option")
                     pass
-        if attempt.lower() == "quit" or "exit":
-            quit()
+
+        if attempt.lower() == "quit":
+                    quit()
         else:
             print("lo siento, nieta. hacer otra vez.")
             pass
