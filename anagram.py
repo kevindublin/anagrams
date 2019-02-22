@@ -25,7 +25,7 @@ def main():
 def la_salon(guess_bank=None):
     #generate dictionary
 
-    word_bank = ['p u e r t a', 's o f a', 't e l e v i s i o n', 'r e l o j', 'l a m p a r a', 'v e n t a n a']
+    word_bank = ['p u e r t a', 's o f a', 'm e s i t a', 'r e l o j', 'l a m p a r a', 'v e n t a n a', 'c o r t i n a']
     guess_bank = {}
 
     for word in word_bank:
@@ -42,7 +42,24 @@ def la_salon(guess_bank=None):
 def la_cocina(guess_bank=None):
     #generate dictionary
 
-    word_bank = ['t a z a', 't e n e d o r', 'p l a t o', 't o s t a d o r a', 'f r i g o r i f i c o', 'e s c o b a']
+    word_bank = ['t a z a', 't e n e d o r', 'p l a t o', 'b a s u r a', 'c o m i d a', 'e s c o b a', 'l i c u a d o r a']
+    guess_bank = {}
+
+    for word in word_bank:
+        import random
+        jumble = word.split(" ")
+        word = word.replace(" ", "")
+        random.shuffle(jumble)
+        guess_bank.update({word: jumble})
+        pass
+
+    return guess_bank
+    pass
+
+def el_bano(guess_bank=None):
+    #generate dictionary
+
+    word_bank = ['d u c h a', 'e s p e j o', 'p e r f u m e', 'j a b o n', 'c e p i l l o', 'i n o d o r o', 'l a v a m a n o s']
     guess_bank = {}
 
     for word in word_bank:
@@ -59,7 +76,8 @@ def la_cocina(guess_bank=None):
 def room_selection():
     print("Abuela: Bienvenidos a mi casa, Ana! Que cuarto? \n",
     "[1] La Salon \n",
-    "[2] La Cocina \n")
+    "[2] La Cocina \n",
+    "[3] El Bano \n")
     choice = input('>')
 
     if choice == '1':
@@ -69,6 +87,10 @@ def room_selection():
     if choice == '2':
         la_cocina()
         guess_bank = la_cocina()
+        guess(guess_bank, valid='false')
+    if choice == '3':
+        el_bano()
+        guess_bank = el_bano()
         guess(guess_bank, valid='false')
     else:
         print("Invalid Choice. Choose again...")
