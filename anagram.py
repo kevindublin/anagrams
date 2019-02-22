@@ -125,9 +125,10 @@ def guess(guess_bank, valid='false'):
             while valid == 'false':
                 again = input("otra vez? [Y] or [N] >")
                 if again.lower()== 'n':
+                    guess_bank.pop(answer)
                     solve = 'true'
                     valid = 'true'
-                    exit()
+                    end_game(guess_bank)
                     pass
                 if again.lower() == 'y':
                     guess_bank.pop(answer)
@@ -141,7 +142,7 @@ def guess(guess_bank, valid='false'):
                     pass
 
         if attempt.lower() == "quit":
-                    quit()
+                    end_game(guess_bank)
         else:
             print("lo siento, nieta. hacer otra vez.")
             pass
@@ -161,7 +162,21 @@ def check_win(guess_bank):
 
 
 def load_game():
-    print('sorry, not writen yet')
+    guess_bank = {}
+
+    from ast import literal_eval
+
+    temp = open('savefile.log').read()
+    guess_bank = literal_eval(temp)
+
+    print('...game loaded!')
+    guess(guess_bank)
+    pass
+
+def end_game(guess_bank):
+    print('Game saved!')
+    open('savefile.log', 'w+').write(str(guess_bank))
+    exit()
     pass
 
 if __name__ == "__main__":
